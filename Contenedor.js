@@ -14,7 +14,7 @@ class Contenedor{
                 data.id = contenido[contenido.length - 1].id + 1;
             }
             let array = [...contenido,data];
-            await fs.promises.writeFile(this.nameFile,JSON.stringify(array));
+            await fs.promises.writeFile(this.nameFile, JSON.stringify(array,null,'\t'));
             console.log(`subido el producto ${data.title}`);
             return data.id;
         } catch (error) {
@@ -25,7 +25,7 @@ class Contenedor{
     async getById(id){
         try {
             let contentFile = await fs.promises.readFile(this.nameFile,'utf-8');
-            if(content == "") return [];   
+            if(contentFile == "") return [];   
             contentFile = JSON.parse(contentFile);
             let filtrado = contentFile.filter(item=>item.id == id);
             if(!filtrado.length) return null;
