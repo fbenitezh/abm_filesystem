@@ -14,7 +14,7 @@ class Contenedor{
                 data.id = contenido[contenido.length - 1].id + 1;
             }
             let array = [...contenido,data];
-            await fs.promises.writeFile(this.nameFile, JSON.stringify(array,null,'\t'));
+            await fs.promises.writeFile(this.nameFile, JSON.stringify(array,null,2));
             console.log(`subido el producto ${data.title}`);
             return data.id;
         } catch (error) {
@@ -51,7 +51,7 @@ class Contenedor{
             if(contentFile == "") return 'Nada para eliminar';
             contentFile = JSON.parse(contentFile);
             let nuevoContenido = contentFile.filter(item=>item.id != id);
-            await fs.promises.writeFile(this.nameFile,JSON.stringify(nuevoContenido));
+            await fs.promises.writeFile(this.nameFile,JSON.stringify(nuevoContenido,null,2));
             return;
         } catch (error) {
             throw new Error(error);

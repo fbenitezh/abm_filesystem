@@ -1,7 +1,5 @@
 const Contenedor = require('./Contenedor');
 
-const contenedor = new Contenedor('productos.txt');
-
 let escuadra = {
     thumbnail:'https://http2.mlstatic.com/D_NQ_NP_962515-MLA43205915348_082020-O.webp',
     price:160,
@@ -26,21 +24,37 @@ let goma = {
     title:'Goma'
 };
 
+const contenedor = new Contenedor('productos.txt');
 
-
-(async function(){
+const guardar = async ()=>{
     await contenedor.save(escuadra);
     await contenedor.save(calculadora);
     await contenedor.save(lapiz);
     await contenedor.save(goma);
-    const producto = await contenedor.getById(2);
+}
+
+const getOne = async id =>{
+    const producto = await contenedor.getById(id);
     console.log(producto);
+}
+
+const getAll = async()=>{
     let productos = await contenedor.getAll();
     console.table(productos);
-    await contenedor.deleteById(4);
+}
+
+const deleteOne = async id =>{
+    await contenedor.deleteById(id);
     console.log('Elemento borrado');
-    productos = await contenedor.getAll();
-    console.table(productos);
+}
+
+const deleteAll = async()=>{
     await contenedor.deleteAll();
     console.log('Se eliminaron todos los productos');
-})();
+}
+
+//guardar();
+//getOne(2);
+//getAll();
+//deleteOne(2);
+//deleteAll();

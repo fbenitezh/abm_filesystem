@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:debug": "nodemon --config nodemon.json --inspect index.js"
+    "dev": "node ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^16.4.5",
-    "nodemon": "^2.0.12"
+    "@types/node": "^16.4.5"
   }
 }
